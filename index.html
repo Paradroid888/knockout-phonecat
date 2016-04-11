@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title data-bind="text: pageTitle">Google Phone Gallery:</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+
+        <label>Search:</label><br>
+            <input data-bind="textInput: searchText">
+        <br><br>
+        <label>Sort by:</label><br>
+        <select data-bind="value: orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+          <option value="-age">Oldest</option>          
+        </select>        
+
+      </div>
+      <div class="col-md-10">
+
+        <p data-bind="text: querySummary"></p>
+        <!--Body content-->
+
+        <ul class="phones" data-bind="foreach: filterPhones" >
+          <li class="thumbnail">
+            <a href="#/phones/phone.id" class="thumb"><img data-bind="attr: {src: imageUrl}"></a>
+            <a href="#/phones/phone.id" data-bind="text: name"></a>
+            <p data-bind="text: snippet"></p>
+          </li>
+        </ul>
+
+        <p data-bind="text: resultsSummary"></p>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>    
+  <script src="bower_components/knockout/dist/knockout.js"></script>    
+  <script src="js/list.js"></script>
+  
+</body>
+</html>

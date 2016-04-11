@@ -1,0 +1,12 @@
+{
+  "name": "knockout-phonecat",
+  "version": "1.0.0",
+  "description": "A version of the Angular phonecat exercise written in Knockout.js",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"    
+  },
+  "author": "Dorian Farrimond",
+  "license": "ISC"
+}
