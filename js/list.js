@@ -8,12 +8,8 @@ function PhoneListViewModel(data){
 function ListViewModel(){
     var self = this;     
     self.searchText = ko.observable('');
-    self.orderProp = ko.observable('name');
-    
+    self.orderProp = ko.observable('name');   
     self.phones = ko.observableArray([]);
-    self.phoneCount = ko.computed(function(){
-       return self.phones().length; 
-    });
     
     self.filterPhones = ko.computed(function(){
         if (!self.searchText()){
@@ -26,7 +22,11 @@ function ListViewModel(){
             })
         }
     });
-    
+
+    self.phoneCount = ko.computed(function(){
+       return self.filterPhones().length;
+    });
+        
     self.querySummary = ko.computed(function(){
         if (self.searchText() != ''){
             return 'You searched for "' + self.searchText() + '"';            
