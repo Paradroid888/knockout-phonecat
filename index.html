@@ -5,10 +5,18 @@
   <title data-bind="text: pageTitle">Google Phone Gallery:</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
+  
+  <script src="bower_components/jquery/dist/jquery.js"></script>    
+  <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="bower_components/bower-knockout-mapping/dist/knockout.mapping.js"></script>
+  <script src="js/components/checkmark.js"></script>
+  <script src="js/components/phonelist.js"></script>
+  <script src="js/components/phonedetail.js"></script>
 </head>
+
 <body>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id="phonelist">
     <div class="row">
       <div class="col-md-2">
         <!--Sidebar content-->
@@ -29,24 +37,20 @@
         <p data-bind="text: querySummary"></p>
         <!--Body content-->
 
-        <ul class="phones" data-bind="foreach: filterPhones" >
-          <li class="thumbnail">
-            <a href="#/phones/phone.id" class="thumb"><img data-bind="attr: {src: imageUrl}"></a>
-            <a href="#/phones/phone.id" data-bind="text: name"></a>
-            <p data-bind="text: snippet"></p>
-          </li>
-        </ul>
+        <phonelist params="phones:filterPhones, phone:phoneDetail"></phonelist>
 
         <p data-bind="text: resultsSummary"></p>
 
       </div>
     </div>
   </div>
-
-
-  <script src="bower_components/jquery/dist/jquery.js"></script>    
-  <script src="bower_components/knockout/dist/knockout.js"></script>    
-  <script src="js/list.js"></script>
+  
+  <div id="phonedetail">
+    <button data-bind="click:backToList">Back</button>
+    <phonedetail params="phone:phoneDetail"></phonedetail>
+  </div>  
+  
+  <script src="js/app.js"></script>
   
 </body>
 </html>
