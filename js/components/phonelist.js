@@ -1,26 +1,24 @@
-ko.components.register('phonelist', {
-    viewModel: function(params){
+define(['knockout', 'knockout-mapping'], function(ko, templateHtml){
 
-        this.phones = params.phones;
+    ko.components.register('phonelist', {
+
+        viewModel: function(params){
+
+            this.phones = params.phones;
+            
+            this.viewDetail = function(data, event){
+                var dataUrl = '/phones/' + data.id() + '.json';
+                        
+                $.getJSON(dataUrl, function(data) {
+                    $('#phonelist').hide();
+                    var phone = ko.mapping.fromJS(data);
+                    params.phone(phone);
+                    $('#phonedetail').show();
+                });        
+            };        
+        },
         
-        this.viewDetail = function(data, event){
-            var dataUrl = '/phones/' + data.id() + '.json';
-                    
-            $.getJSON(dataUrl, function(data) {
-                $('#phonelist').hide();
-                var phone = ko.mapping.fromJS(data);
-                params.phone(phone);
-                $('#phonedetail').show();
-            });        
-        };        
-    },
+        template: {require:'text!templates/phonelist.html'}
+    });
     
-    template: `<ul class="phones" data-bind="foreach: phones">
-          <li class="thumbnail" data-bind="click: $parent.viewDetail">
-            <a href="#/phones/phone.id" class="thumb"><img data-bind="attr: {src: imageUrl}"></a>
-            <a href="#/phones/phone.id" data-bind="text: name"></a>
-            <p data-bind="text: snippet"></p>
-          </li>
-        </ul>`
 });
-

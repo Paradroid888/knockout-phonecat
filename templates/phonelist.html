@@ -1,0 +1,7 @@
+<ul class="phones" data-bind="foreach: phones">
+    <li class="thumbnail" data-bind="click: $parent.viewDetail">
+        <a href="#/phones/phone.id" class="thumb"><img data-bind="attr: {src: imageUrl}"></a>
+        <a href="#/phones/phone.id" data-bind="text: name"></a>
+        <p data-bind="text: snippet"></p>
+    </li>
+</ul>
