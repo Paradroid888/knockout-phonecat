@@ -9,10 +9,11 @@ Working so far:
 * Cross-component interaction
 * AJAX calls
 * ko.mapping
+* require.js module loader
+* Module loader to allow component markup to live in separate files 
 
 
 ToDo
 * Clean-up/remove view models (use ko.mapping for list view)
 * Sorting
 * Investigate a solution for hashbang urls or history
-* Use a module loader to allow component markup to live in separate files 
